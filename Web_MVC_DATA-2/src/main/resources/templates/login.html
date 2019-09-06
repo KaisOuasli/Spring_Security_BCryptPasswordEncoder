@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/Layout">
+<head>
+<meta charset="utf-8" />
+<title>Authentification</title>
+<link
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="../static/css/myStyle.css"
+	th:href="@{/css/myStyle.css}" />
+</head>
+<body>
+	<div class="container-fluid">
+		<div>
+			<label>user->user</label>
+		</div>
+		<div>
+			<label>admin->admin</label>
+		</div>
+		<div class="col-md-4 col-md-offset-4 spacer40">
+			<div class="panel panel-primary">
+				<div class="panel-heading">Authentification</div>
+				<div class="panel-body">
+					<form th:action="@{/login}" method="post">
+
+						<table class="custom_centered">
+							<tr>
+								<td><label class="spacer10 spacerRight5">Usermame</label></td>
+								<td><input type="text" name="username" class="spacer10" /></td>
+							</tr>
+							<tr>
+								<td><label class="spacer10 spacerRight5">Password</label></td>
+								<td><input type="password" name="password" class="spacer10" /></td>
+							</tr>
+						</table>
+
+						<div>
+							<button type="submit"
+								class="btn btn-primary center-block  spacer10">Login</button>
+						</div>
+
+					</form>
+
+					<div th:if="${param.error}" class="text-center">
+						<label class="text-danger spacer10">Incorrect username or
+							password</label>
+					</div>
+					<div th:if="${param.logout}" class="text-center">
+						<label class="text-danger spacer10">You have been logged
+							out</label>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+	<div th:replace="template1 :: footer"></div>
+</body>
+</html>
